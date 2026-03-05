@@ -16,6 +16,9 @@
                 <div class="legal-content">
                     <h2>Kontakt</h2>
                     <p><strong>{{ config.SITE_NAME_LEGAL }}</strong></p>
+                    {% if config.SITE_FIRSTNAME or config.SITE_LASTNAME %}
+                    <p>{{ config.SITE_FIRSTNAME }} {{ config.SITE_LASTNAME }}</p>
+                    {% endif %}
                     {% if config.SITE_STREET %}
                     <p>{{ config.SITE_STREET }}</p>
                     {% endif %}
