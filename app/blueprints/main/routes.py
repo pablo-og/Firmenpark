@@ -63,3 +63,8 @@ def ics():
         )
 
     return render_template("main/ics.html")
+
+
+@bp.route("/impressum")
+def impressum():
+    return render_template("main/impressum.html")
