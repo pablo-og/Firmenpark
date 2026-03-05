@@ -29,6 +29,10 @@ Erstellen Sie einfach und schnell ICS-Kalenderdateien für Ihre Termine und Vera
 ### Installation
 
 ```bash
+# Repository klonen
+git clone https://github.com/pablo-og/Firmenpark.git
+cd Firmenpark
+
 # Virtual Environment erstellen
 python -m venv venv
 
@@ -40,9 +44,30 @@ venv\Scripts\activate  # Windows
 # Abhängigkeiten installieren
 pip install -r requirements.txt
 
+# Konfiguration einrichten
+cp .env.example .env
+# Editiere .env und setze deine Werte
+
 # Server starten
 python run.py
 ```
+
+### Konfiguration
+
+Kopieren Sie `.env.example` nach `.env` und passen Sie die Werte an:
+
+```bash
+cp .env.example .env
+```
+
+**WICHTIG: SECRET_KEY**
+- Der `SECRET_KEY` dient der Sicherheit Ihrer Anwendung (Session-Schutz, CSRF)
+- Verwenden Sie mindestens 32 Zeichen
+- Generieren Sie einen sicheren Schlüssel mit:
+  ```bash
+  python -c "import secrets; print(secrets.token_hex(32))"
+  ```
+- Teilen Sie den Schlüssel niemals und committen Sie ihn nicht ins Repository
 
 ### Zugriff
 
