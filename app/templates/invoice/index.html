@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Rechnung - {{ config.SITE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Rechnung erstellen</h1>
+        <p>Erstellen Sie professionelle Rechnungen für Ihr Business</p>
+    </div>
+</section>
+
+<section class="invoice-form-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="form-card">
+                    <form method="POST" action="{{ url_for('invoice.index') }}">
+                        <h5 class="mb-3">Rechnungsdetails</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date" class="form-label">Rechnungsdatum *</label>
+                                <input type="date" class="form-control" id="date" name="date" required>
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <h5 class="mb-3">Kunde *</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="customer_name" class="form-label">Firmenname</label>
+                                <input type="text" class="form-control" id="customer_name" name="customer_name" required placeholder="Musterfirma GmbH">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="customer_address" class="form-label">Adresse</label>
+                                <input type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Musterstraße 123">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="customer_zip" class="form-label">PLZ</label>
+                                <input type="text" class="form-control" id="customer_zip" name="customer_zip" placeholder="12345">
+                            </div>
+                            
+                            <div class="col-md-8 mb-3">
+                                <label for="customer_city" class="form-label">Stadt</label>
+                                <input type="text" class="form-control" id="customer_city" name="customer_city" placeholder="Musterstadt">
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <h5 class="mb-3">Position</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label for="description" class="form-label">Beschreibung *</label>
+                                <input type="text" class="form-control" id="description" name="description" required placeholder="z.B. Webdesign">
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="quantity" class="form-label">Menge *</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" step="0.5" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="unit_price" class="form-label">Einzelpreis *</label>
+                                <input type="number" class="form-control" id="unit_price" name="unit_price" required placeholder="z.B. 500.00" step="0.01">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="tax_rate" class="form-label">MwSt-Satz</label>
+                                <select class="form-select" id="tax_rate" name="tax_rate">
+                                    <option value="0" selected>0% - steuerfrei</option>
+                                    <option value="7">7% - ermäßigt</option>
+                                    <option value="19">19% - Standard</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-submit">Rechnung erstellen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Was ist das?</h3>
+                <p>Mit diesem Generator erstellen Sie professionelle Rechnungen im PDF-Format - einfach und kostenlos. Die Rechnung enthält alle wichtigen Informationen für Ihre Kunden und die Finanzbehörden.</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Wie funktioniert's?</h3>
+                <ol>
+                    <li>Tragen Sie die Kundendaten ein</li>
+                    <li>Geben Sie die Position mit Preis und MwSt an</li>
+                    <li>Klicken Sie auf "Rechnung erstellen"</li>
+                    <li>Die PDF-Datei wird heruntergeladen</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

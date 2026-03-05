@@ -11,3 +11,9 @@ class ICSEvent(db.Model):
     end_date = db.Column(db.String(20))
     location = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+
+class InvoiceCounter(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    current = db.Column(db.Integer, default=1000)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())

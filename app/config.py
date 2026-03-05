@@ -17,3 +17,5 @@ class Config:
     SITE_STREET = os.environ.get("SITE_STREET", "")
     SITE_ZIP = os.environ.get("SITE_ZIP", "")
     SITE_CITY = os.environ.get("SITE_CITY", "")
+    INVOICE_PREFIX = os.environ.get("INVOICE_PREFIX", "RE-2026-")
+    INVOICE_START = int(os.environ.get("INVOICE_START", "1001"))

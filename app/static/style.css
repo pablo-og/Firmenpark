@@ -475,3 +475,9 @@ body {
         padding: 1.5rem;
     }
 }
+
+/* Invoice Form Section */
+.invoice-form-section {
+    padding: 4rem 0;
+    background-color: var(--color-light);
+}
