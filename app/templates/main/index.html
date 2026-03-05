@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Startseite - Firmenpark.net{% endblock %}
+{% block title %}Startseite - {{ config.SITE_NAME }}{% endblock %}
 
 {% block content %}
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">Willkommen bei Firmenpark.net</h1>
+            <h1 class="hero-title">Willkommen bei {{ config.SITE_NAME }}</h1>
             <p class="hero-subtitle">Einfache Online-Lösungen für Ihr Business</p>
             <a href="{{ url_for('main.ics') }}" class="btn btn-hero">Termin erstellen</a>
         </div>
