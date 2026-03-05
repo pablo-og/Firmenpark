@@ -1,8 +1,8 @@
-# Firmenpark.net
+# Firmenpark
 
 Einfache Online-Lösungen für Ihr Business.
 
-## ICS-Generator
+## Termin-Generator
 
 Erstellen Sie einfach und schnell ICS-Kalenderdateien für Ihre Termine und Veranstaltungen.
 
@@ -84,5 +84,4 @@ git push
 
 ---
 
-**Autor**: Markus Engel & Z.ai  
-**Website**: firmenpark.net
+**Autor**: Markus Engel & Z.ai
