@@ -1,0 +1,14 @@
+<nav class="site-nav">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation umschalten">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('main.index') }}" class="nav-link">Startseite</a></li>
+                <li><a href="{{ url_for('main.ics') }}" class="nav-link">ICS-Generator</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

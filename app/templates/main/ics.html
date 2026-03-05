@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}ICS-Generator - Firmenpark.net{% endblock %}
+
+{% block content %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const allDayCheckbox = document.getElementById('all_day');
+    const endDateContainer = document.getElementById('end_date_container');
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    
+    function toggleEndDate() {
+        if (allDayCheckbox.checked) {
+            endDateContainer.style.display = 'none';
+            endDateInput.removeAttribute('required');
+            endDateInput.value = '';
+            startDateInput.type = 'date';
+            endDateInput.type = 'date';
+        } else {
+            endDateContainer.style.display = 'block';
+            startDateInput.type = 'datetime-local';
+            endDateInput.type = 'datetime-local';
+        }
+    }
+    
+    allDayCheckbox.addEventListener('change', toggleEndDate);
+    toggleEndDate();
+});
+</script>
+<section class="page-header">
+    <div class="container">
+        <h1>ICS-Generator</h1>
+        <p>Erstellen Sie Ihre Kalenderdatei in wenigen Schritten</p>
+    </div>
+</section>
+
+<section class="ics-form-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-card">
+                    <form method="POST" action="{{ url_for('main.ics') }}">
+                        <h5 class="mb-3">Pflichtfelder</h5>
+                        
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Titel *</label>
+                            <input type="text" class="form-control" id="title" name="title" required placeholder="z.B. Meeting mit Kunden">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="all_day" name="all_day">
+                                <label class="form-check-label" for="all_day">Ganztägig</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="start_date" class="form-label">Startdatum *</label>
+                                <input type="datetime-local" class="form-control" id="start_date" name="start_date" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3" id="end_date_container">
+                                <label for="end_date" class="form-label">Enddatum</label>
+                                <input type="datetime-local" class="form-control" id="end_date" name="end_date">
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <h5 class="mb-3">Optionale Felder</h5>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Beschreibung</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Optionale Beschreibung"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Ort</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="z.B. Konferenzraum A">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="organizer" class="form-label">Organisator</label>
+                                <input type="email" class="form-control" id="organizer" name="organizer" placeholder="name@beispiel.de">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="attendees" class="form-label">Teilnehmer</label>
+                                <input type="text" class="form-control" id="attendees" name="attendees" placeholder="email1@beispiel.de, email2@beispiel.de">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="categories" class="form-label">Kategorie</label>
+                                <select class="form-select" id="categories" name="categories">
+                                    <option value="" selected>Keine Kategorie</option>
+                                    <option value="Arbeit">Arbeit</option>
+                                    <option value="Privat">Privat</option>
+                                    <option value="Hobby">Hobby</option>
+                                    <option value="Termin">Termin</option>
+                                    <option value="Besprechung">Besprechung</option>
+                                    <option value="Urlaub">Urlaub</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="priority" class="form-label">Priorität</label>
+                                <select class="form-select" id="priority" name="priority">
+                                    <option value="0" selected>Keine</option>
+                                    <option value="1">1 - Niedrig</option>
+                                    <option value="5">5 - Mittel</option>
+                                    <option value="9">9 - Hoch</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="recurrence" class="form-label">Wiederholung</label>
+                                <select class="form-select" id="recurrence" name="recurrence">
+                                    <option value="" selected>Keine Wiederholung</option>
+                                    <option value="DAILY">Täglich</option>
+                                    <option value="WEEKLY">Wöchentlich</option>
+                                    <option value="MONTHLY">Monatlich</option>
+                                    <option value="YEARLY">Jährlich</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="reminder" class="form-label">Erinnerung</label>
+                                <select class="form-select" id="reminder" name="reminder">
+                                    <option value="0">Keine Erinnerung</option>
+                                    <option value="15" selected>15 Minuten vorher</option>
+                                    <option value="30">30 Minuten vorher</option>
+                                    <option value="60">1 Stunde vorher</option>
+                                    <option value="120">2 Stunden vorher</option>
+                                    <option value="1440">1 Tag vorher</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-submit">ICS-Datei herunterladen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Was ist eine ICS-Datei?</h3>
+                <p>ICS (iCalendar) ist ein Standardformat für Kalenderdateien. Mit einer ICS-Datei können Sie Termine in verschiedene Kalenderprogramme importieren wie:</p>
+                <ul>
+                    <li>Microsoft Outlook</li>
+                    <li>Google Kalender</li>
+                    <li>Apple Kalender</li>
+                    <li>Thunderbird</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>Wie funktioniert's?</h3>
+                <ol>
+                    <li>Füllen Sie das Formular aus</li>
+                    <li>Klicken Sie auf "Herunterladen"</li>
+                    <li>Öffnen Sie die heruntergeladene Datei</li>
+                    <li>Der Termin wird automatisch in Ihrem Kalender angezeigt</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

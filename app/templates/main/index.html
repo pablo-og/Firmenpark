@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Startseite - Firmenpark.net{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Willkommen bei Firmenpark.net</h1>
+            <p class="hero-subtitle">Einfache Online-Lösungen für Ihr Business</p>
+            <a href="{{ url_for('main.ics') }}" class="btn btn-hero">ICS-Generator starten</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Unsere Lösungen</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>ICS-Generator</h3>
+                    <p>Erstellen Sie einfach und schnell ICS-Kalenderdateien für Ihre Termine und Veranstaltungen.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Einfach & Schnell</h3>
+                    <p>Keine komplizierte Software. Alles direkt im Browser - keine Installation nötig.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Professionell</h3>
+                    <p>Qualitative Lösungen für Unternehmen, die Wert auf Effizienz legen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Bereit loszulegen?</h2>
+        <p>Nutzen Sie jetzt unseren kostenlosen ICS-Generator</p>
+        <a href="{{ url_for('main.ics') }}" class="btn btn-cta">Jetzt starten</a>
+    </div>
+</section>
+{% endblock %}
