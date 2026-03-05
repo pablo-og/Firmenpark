@@ -481,3 +481,39 @@ body {
     padding: 4rem 0;
     background-color: var(--color-light);
 }
+
+.position-item {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-sm);
+}
+
+.btn-secondary {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: var(--color-pink);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0586c;
+}
