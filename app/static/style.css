@@ -76,15 +76,11 @@ body {
     background-color: var(--color-white);
     box-shadow: var(--shadow-sm);
     padding: 0.75rem 0;
-}
-
-.site-nav .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
 }
 
 .navbar-toggler {
+    display: none;
     border: none;
     background: none;
     padding: 0.5rem;
@@ -104,10 +100,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-}
-
-.navbar-collapse {
-    flex-grow: 0;
 }
 
 .nav-menu {
@@ -133,6 +125,10 @@ body {
 }
 
 @media (max-width: 991px) {
+    .navbar-toggler {
+        display: block;
+    }
+    
     .navbar-collapse {
         position: absolute;
         top: 100%;
@@ -141,6 +137,10 @@ body {
         background: var(--color-white);
         padding: 1rem;
         box-shadow: var(--shadow-md);
+    }
+    
+    .navbar-collapse:not(.show) {
+        display: none;
     }
     
     .nav-menu {
